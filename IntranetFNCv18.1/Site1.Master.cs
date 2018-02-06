@@ -12,7 +12,7 @@ namespace IntranetFNCv18._1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int currentNumberOfUsers = IntranetFNCv18._1.Global.CurrentNumberOfUsers;            
+            int currentNumberOfUsers = Global.CurrentNumberOfUsers;            
             lblCurrentNumberOfUsers.Text = currentNumberOfUsers.ToString();
         }
         protected void CerrarSession(object sender, EventArgs e)
