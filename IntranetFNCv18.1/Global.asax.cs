@@ -12,17 +12,34 @@ using System.Configuration;
 namespace IntranetFNCv18._1
 {
     public class Global : HttpApplication
-    {   
+    {
+        private static int totalNumberOfUsers = 0;
         private static int currentNumberOfUsers = 0;
+        public static int CurrentNumberOfUsers
+        {
+            get
+            {
+                return currentNumberOfUsers;
+            }
+        }
+        public static int TotalNumberOfUsers
+        {
+            get
+            {
+                return totalNumberOfUsers;
+            }
+        }
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciar la aplicación            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
         void Session_Start(object sender, EventArgs e)
         { // Codigo que se ejectura cuando se inicia la sesion.
-            
+
+            totalNumberOfUsers += 1;
             currentNumberOfUsers += 1;
         }
         protected void Session_End(Object sender, EventArgs e)
@@ -73,12 +90,6 @@ namespace IntranetFNCv18._1
         {
 
         }
-        public static int CurrentNumberOfUsers
-        {
-            get
-            {
-                return currentNumberOfUsers;
-            }
-        }
+      
     }
 }
