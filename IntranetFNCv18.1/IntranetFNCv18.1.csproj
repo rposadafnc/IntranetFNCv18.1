@@ -1603,6 +1603,8 @@
     <Content Include="Vistas\PoliticasCorporativas.aspx" />
     <Content Include="Vistas\PoliticasOperativas.aspx" />
     <Content Include="Vistas\Procedimientos-Instructivos.aspx" />
+    <Content Include="Vistas\Restricciones.aspx" />
+    <Content Include="Vistas\restricciones.html" />
     <Content Include="Vistas\V1\WebForm1.aspx" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap-theme.min.css.map" />
@@ -1920,6 +1922,13 @@
     </Compile>
     <Compile Include="Vistas\Procedimientos-Instructivos.aspx.designer.cs">
       <DependentUpon>Procedimientos-Instructivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Restricciones.aspx.cs">
+      <DependentUpon>Restricciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\Restricciones.aspx.designer.cs">
+      <DependentUpon>Restricciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\V1\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

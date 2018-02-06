@@ -166,6 +166,7 @@
                                 <li><a href="../Vistas/PoliticasOperativas.aspx"><i class="fa fa-angle-double-right"></i>Políticas Operativas</a></li>
                                 <li><a href="../Vistas/Manuales.aspx"><i class="fa fa-angle-double-right"></i>Manuales</a></li>
                                 <li><a href="../Vistas/Procedimientos-Instructivos.aspx"><i class="fa fa-angle-double-right"></i>Instructivos</a></li>
+                                <li><a href="../Vistas/Restricciones.aspx"><i class="fa fa-angle-double-right"></i>Restricciones</a></li>
                             </ul>
                         </li>
                         <%}%>

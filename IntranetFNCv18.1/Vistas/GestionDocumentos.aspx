@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="GestionDocumentos.aspx.cs" Inherits="IntranetFNCv18._1.Vistas.GestionDocumentos" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Inhead" runat="server">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<asp:Content ID="Content1" ContentPlaceHolderID="Inhead" runat="server">    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="InBody" runat="server">
     <form id="form1" runat="server">

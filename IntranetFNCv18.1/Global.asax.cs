@@ -90,6 +90,14 @@ namespace IntranetFNCv18._1
         {
 
         }
-      
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = this.Server.GetLastError().GetBaseException();
+           // MyEventLog.LogException(ex); //Log the error in the Event Log!
+                                         //
+            FormsAuthentication.SignOut();
+            this.Response.Redirect("Default.aspx?Error=1");//Here you can change with your URL!
+        }
+
     }
 }
