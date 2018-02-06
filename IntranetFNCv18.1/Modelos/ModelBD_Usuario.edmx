@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Intranet_FNCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acceso">
+          <Key>
+            <PropertyRef Name="IdAcceso" />
+          </Key>
+          <Property Name="IdAcceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoRol" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="IdModulo" Type="int" />
+        </EntityType>
+        <EntityType Name="GestionDocumental">
+          <Key>
+            <PropertyRef Name="IdGestionDocumental" />
+          </Key>
+          <Property Name="IdGestionDocumental" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreDocumento" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="800" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdTipoDocumento" Type="int" Nullable="false" />
+          <Property Name="IdDireccion" Type="int" Nullable="false" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="NoDescargas" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="IdModulo" />
+          </Key>
+          <Property Name="IdModulo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoRol">
+          <Key>
+            <PropertyRef Name="IdTipoRol" />
+          </Key>
+          <Property Name="IdTipoRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoRol_Modulo">
+          <Key>
+            <PropertyRef Name="IdTipoRol_Modulo" />
+          </Key>
+          <Property Name="IdTipoRol_Modulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoRol" Type="int" Nullable="false" />
+          <Property Name="IdModulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRegistro_AD" Type="varchar(max)" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="200" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="50" />
+          <Property Name="Titulo" Type="varchar" MaxLength="150" />
+          <Property Name="FechaRegistro" Type="date" />
+        </EntityType>
+        <EntityType Name="UsuarioRol">
+          <Key>
+            <PropertyRef Name="IdUsuarioRol" />
+          </Key>
+          <Property Name="IdUsuarioRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="FechaRegistro" Type="date" />
+          <Property Name="IdTipoRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Acceso_Modulo">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="0..1" />
+          <End Role="Acceso" Type="Self.Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="IdModulo" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acceso_TipoRol">
+          <End Role="TipoRol" Type="Self.TipoRol" Multiplicity="1" />
+          <End Role="Acceso" Type="Self.Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoRol">
+              <PropertyRef Name="IdTipoRol" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdTipoRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acceso_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Acceso" Type="Self.Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoRol_Modulo_Modulo">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+          <End Role="TipoRol_Modulo" Type="Self.TipoRol_Modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="IdModulo" />
+            </Principal>
+            <Dependent Role="TipoRol_Modulo">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioRol_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="UsuarioRol" Type="Self.UsuarioRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="UsuarioRol">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Intranet_FNCModelStoreContainer">
+          <EntitySet Name="Acceso" EntityType="Self.Acceso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GestionDocumental" EntityType="Self.GestionDocumental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoRol" EntityType="Self.TipoRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoRol_Modulo" EntityType="Self.TipoRol_Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Acceso_Modulo" Association="Self.FK_Acceso_Modulo">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Acceso" EntitySet="Acceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acceso_TipoRol" Association="Self.FK_Acceso_TipoRol">
+            <End Role="TipoRol" EntitySet="TipoRol" />
+            <End Role="Acceso" EntitySet="Acceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acceso_Usuario" Association="Self.FK_Acceso_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Acceso" EntitySet="Acceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoRol_Modulo_Modulo" Association="Self.FK_TipoRol_Modulo_Modulo">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="TipoRol_Modulo" EntitySet="TipoRol_Modulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioRol_Usuario" Association="Self.FK_UsuarioRol_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Intranet_FNCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Intranet_FNCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Modulo" EntityType="Intranet_FNCModel.Modulo" />
+          <EntitySet Name="TipoRol" EntityType="Intranet_FNCModel.TipoRol" />
+          <EntitySet Name="TipoRol_Modulo" EntityType="Intranet_FNCModel.TipoRol_Modulo" />
+          <EntitySet Name="Usuario" EntityType="Intranet_FNCModel.Usuario" />
+          <AssociationSet Name="FK_TipoRol_Modulo_Modulo" Association="Intranet_FNCModel.FK_TipoRol_Modulo_Modulo">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="TipoRol_Modulo" EntitySet="TipoRol_Modulo" />
+          </AssociationSet>
+          <EntitySet Name="UsuarioRol" EntityType="Intranet_FNCModel.UsuarioRol" />
+          <AssociationSet Name="FK_UsuarioRol_Usuario" Association="Intranet_FNCModel.FK_UsuarioRol_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
+          </AssociationSet>
+          <EntitySet Name="Acceso" EntityType="Intranet_FNCModel.Acceso" />
+          <AssociationSet Name="FK_Acceso_Modulo" Association="Intranet_FNCModel.FK_Acceso_Modulo">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Acceso" EntitySet="Acceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acceso_TipoRol" Association="Intranet_FNCModel.FK_Acceso_TipoRol">
+            <End Role="TipoRol" EntitySet="TipoRol" />
+            <End Role="Acceso" EntitySet="Acceso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acceso_Usuario" Association="Intranet_FNCModel.FK_Acceso_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Acceso" EntitySet="Acceso" />
+          </AssociationSet>
+          <EntitySet Name="GestionDocumental" EntityType="Intranet_FNCModel.GestionDocumental" />
+        </EntityContainer>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="IdModulo" />
+          </Key>
+          <Property Name="IdModulo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TipoRol_Modulo" Relationship="Intranet_FNCModel.FK_TipoRol_Modulo_Modulo" FromRole="Modulo" ToRole="TipoRol_Modulo" />
+          <NavigationProperty Name="Acceso" Relationship="Intranet_FNCModel.FK_Acceso_Modulo" FromRole="Modulo" ToRole="Acceso" />
+        </EntityType>
+        <EntityType Name="TipoRol">
+          <Key>
+            <PropertyRef Name="IdTipoRol" />
+          </Key>
+          <Property Name="IdTipoRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Acceso" Relationship="Intranet_FNCModel.FK_Acceso_TipoRol" FromRole="TipoRol" ToRole="Acceso" />
+        </EntityType>
+        <EntityType Name="TipoRol_Modulo">
+          <Key>
+            <PropertyRef Name="IdTipoRol_Modulo" />
+          </Key>
+          <Property Name="IdTipoRol_Modulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoRol" Type="Int32" Nullable="false" />
+          <Property Name="IdModulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modulo" Relationship="Intranet_FNCModel.FK_TipoRol_Modulo_Modulo" FromRole="TipoRol_Modulo" ToRole="Modulo" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRegistro_AD" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="UsuarioRol" Relationship="Intranet_FNCModel.FK_UsuarioRol_Usuario" FromRole="Usuario" ToRole="UsuarioRol" />
+          <NavigationProperty Name="Acceso" Relationship="Intranet_FNCModel.FK_Acceso_Usuario" FromRole="Usuario" ToRole="Acceso" />
+        </EntityType>
+        <Association Name="FK_TipoRol_Modulo_Modulo">
+          <End Type="Intranet_FNCModel.Modulo" Role="Modulo" Multiplicity="1" />
+          <End Type="Intranet_FNCModel.TipoRol_Modulo" Role="TipoRol_Modulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="IdModulo" />
+            </Principal>
+            <Dependent Role="TipoRol_Modulo">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UsuarioRol">
+          <Key>
+            <PropertyRef Name="IdUsuarioRol" />
+          </Key>
+          <Property Name="IdUsuarioRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="IdTipoRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Intranet_FNCModel.FK_UsuarioRol_Usuario" FromRole="UsuarioRol" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_UsuarioRol_Usuario">
+          <End Type="Intranet_FNCModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Intranet_FNCModel.UsuarioRol" Role="UsuarioRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="UsuarioRol">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Acceso">
+          <Key>
+            <PropertyRef Name="IdAcceso" />
+          </Key>
+          <Property Name="IdAcceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoRol" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdModulo" Type="Int32" />
+          <NavigationProperty Name="Modulo" Relationship="Intranet_FNCModel.FK_Acceso_Modulo" FromRole="Acceso" ToRole="Modulo" />
+          <NavigationProperty Name="TipoRol" Relationship="Intranet_FNCModel.FK_Acceso_TipoRol" FromRole="Acceso" ToRole="TipoRol" />
+          <NavigationProperty Name="Usuario" Relationship="Intranet_FNCModel.FK_Acceso_Usuario" FromRole="Acceso" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_Acceso_Modulo">
+          <End Type="Intranet_FNCModel.Modulo" Role="Modulo" Multiplicity="0..1" />
+          <End Type="Intranet_FNCModel.Acceso" Role="Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="IdModulo" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acceso_TipoRol">
+          <End Type="Intranet_FNCModel.TipoRol" Role="TipoRol" Multiplicity="1" />
+          <End Type="Intranet_FNCModel.Acceso" Role="Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoRol">
+              <PropertyRef Name="IdTipoRol" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdTipoRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acceso_Usuario">
+          <End Type="Intranet_FNCModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Intranet_FNCModel.Acceso" Role="Acceso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Acceso">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GestionDocumental">
+          <Key>
+            <PropertyRef Name="IdGestionDocumental" />
+          </Key>
+          <Property Name="IdGestionDocumental" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreDocumento" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="IdDireccion" Type="Int32" Nullable="false" />
+          <Property Name="TipoDocumento" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="NoDescargas" Type="Int64" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Intranet_FNCModelStoreContainer" CdmEntityContainer="Intranet_FNCEntities">
+          <EntitySetMapping Name="Modulo">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.Modulo">
+              <MappingFragment StoreEntitySet="Modulo">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoRol">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.TipoRol">
+              <MappingFragment StoreEntitySet="TipoRol">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+                <ScalarProperty Name="IdTipoRol" ColumnName="IdTipoRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoRol_Modulo">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.TipoRol_Modulo">
+              <MappingFragment StoreEntitySet="TipoRol_Modulo">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdTipoRol" ColumnName="IdTipoRol" />
+                <ScalarProperty Name="IdTipoRol_Modulo" ColumnName="IdTipoRol_Modulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="IdRegistro_AD" ColumnName="IdRegistro_AD" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioRol">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.UsuarioRol">
+              <MappingFragment StoreEntitySet="UsuarioRol">
+                <ScalarProperty Name="IdTipoRol" ColumnName="IdTipoRol" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdUsuarioRol" ColumnName="IdUsuarioRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Acceso">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.Acceso">
+              <MappingFragment StoreEntitySet="Acceso">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdTipoRol" ColumnName="IdTipoRol" />
+                <ScalarProperty Name="IdAcceso" ColumnName="IdAcceso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GestionDocumental">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.GestionDocumental">
+              <MappingFragment StoreEntitySet="GestionDocumental">
+                <ScalarProperty Name="NoDescargas" ColumnName="NoDescargas" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="IdDireccion" ColumnName="IdDireccion" />
+                <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+                <ScalarProperty Name="IdGestionDocumental" ColumnName="IdGestionDocumental" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

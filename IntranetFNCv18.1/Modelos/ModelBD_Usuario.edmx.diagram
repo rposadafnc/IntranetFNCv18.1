@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81a5ee5bb17c45bcb3e13efb3dde8871" Name="Diagram1">
+        <EntityTypeShape EntityType="Intranet_FNCModel.Modulo" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="Intranet_FNCModel.TipoRol" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="Intranet_FNCModel.TipoRol_Modulo" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="Intranet_FNCModel.Usuario" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="Intranet_FNCModel.FK_TipoRol_Modulo_Modulo" />
+        <EntityTypeShape EntityType="Intranet_FNCModel.UsuarioRol" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="Intranet_FNCModel.FK_UsuarioRol_Usuario" />
+        <EntityTypeShape EntityType="Intranet_FNCModel.Acceso" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="Intranet_FNCModel.FK_Acceso_Modulo" />
+        <AssociationConnector Association="Intranet_FNCModel.FK_Acceso_TipoRol" />
+        <AssociationConnector Association="Intranet_FNCModel.FK_Acceso_Usuario" />
+        <EntityTypeShape EntityType="Intranet_FNCModel.GestionDocumental" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
