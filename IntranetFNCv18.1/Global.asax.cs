@@ -7,15 +7,26 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Security.Principal;
+using System.Configuration;
+
 namespace IntranetFNCv18._1
 {
     public class Global : HttpApplication
     {
+        private int cnt;
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciar la aplicación
+            cnt = 0;
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+        void Session_Start(object sender, EventArgs e)
+        { // Codigo que se ejectura cuando se inicia la sesion.
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings.Get("HabilitarContadorVisitas")))
+            {
+                Session["cv"] = cnt++;
+            }
         }
         void Application_AuthenticateRequest(Object sender, EventArgs e)
         {

@@ -32,7 +32,9 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     <asp:ContentPlaceHolder ID="Inhead" runat="server">
+        
     </asp:ContentPlaceHolder>
+
 </head>
 <body class="skin-black">
     <!-- header logo: style can be found in header.less -->
@@ -94,9 +96,11 @@
                             Hola, 
                             <%=HttpContext.Current.Session["Nombre"].ToString()%><br />
                         </p>
-                        <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+                        <a href="#"><i class="fa fa-circle text-success"></i>Online</a><br />
+                      <a> Numero de Usuarios Conectados: <asp:Label ID="Label1" runat="server" Text=""></asp:Label></a>
                     </div>
                 </div>
+               
                 <hr />
                 <!-- search form -->
                 <%-- <form action="#" method="get" class="sidebar-form">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IntranetFNCv18._1.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,7 @@ namespace IntranetFNCv18._1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Label1.Text = Session["cv"].ToString();
         }
         protected void CerrarSession(object sender, EventArgs e)
         {
