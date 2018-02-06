@@ -115,7 +115,7 @@ namespace IntranetFNCv18._1
                     else
                     {
                         errorLabel.Visible = true;
-                        errorLabel.Text = "Error de autenticación, por favor verifique su nombre de Usuario y Contraseña. - Si el error persiste por favor contactarse con Dirección de Tecnología";
+                        errorLabel.Text = "Error de autenticación, por favor verifique su nombre de Usuario y Contraseña. - Si el error persiste por favor contactarse con Dirección de Tecnología.";
                     }
                 }
             }
