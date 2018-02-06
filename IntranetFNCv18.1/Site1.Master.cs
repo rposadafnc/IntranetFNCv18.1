@@ -12,7 +12,12 @@ namespace IntranetFNCv18._1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = Session["cv"].ToString();
+            string sessionUserId = Session["cv"] as string;
+
+            if (string.IsNullOrEmpty(sessionUserId))
+            {
+                Label1.Text = Session["cv"].ToString();
+            }
         }
         protected void CerrarSession(object sender, EventArgs e)
         {
