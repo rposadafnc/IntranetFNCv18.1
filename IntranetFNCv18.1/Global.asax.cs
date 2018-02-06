@@ -12,21 +12,22 @@ using System.Configuration;
 namespace IntranetFNCv18._1
 {
     public class Global : HttpApplication
-    {
-        private int cnt;
+    {   
+        private static int currentNumberOfUsers = 0;
         void Application_Start(object sender, EventArgs e)
         {
-            // Código que se ejecuta al iniciar la aplicación
-            cnt = 0;
+            // Código que se ejecuta al iniciar la aplicación            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
         void Session_Start(object sender, EventArgs e)
         { // Codigo que se ejectura cuando se inicia la sesion.
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings.Get("HabilitarContadorVisitas")))
-            {
-                Session["cv"] = cnt++;
-            }
+            
+            currentNumberOfUsers += 1;
+        }
+        protected void Session_End(Object sender, EventArgs e)
+        {
+            currentNumberOfUsers -= 1;
         }
         void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
@@ -67,6 +68,17 @@ namespace IntranetFNCv18._1
 
             Context.User = principal;
 
+        }
+        protected void Application_End(Object sender, EventArgs e)
+        {
+
+        }
+        public static int CurrentNumberOfUsers
+        {
+            get
+            {
+                return currentNumberOfUsers;
+            }
         }
     }
 }

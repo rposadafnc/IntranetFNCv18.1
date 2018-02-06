@@ -32,7 +32,6 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     <asp:ContentPlaceHolder ID="Inhead" runat="server">
-        
     </asp:ContentPlaceHolder>
 
 </head>
@@ -53,7 +52,7 @@
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">                       
+                    <li class="dropdown messages-menu">
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -97,10 +96,10 @@
                             <%=HttpContext.Current.Session["Nombre"].ToString()%><br />
                         </p>
                         <a href="#"><i class="fa fa-circle text-success"></i>Online</a><br />
-                      <a> Numero de Usuarios Conectados: <asp:Label ID="Label1" runat="server" Text=""></asp:Label></a>
+                        <a>  Numero de Usuarios Conectados: <asp:Label ID="lblCurrentNumberOfUsers" runat="server"></asp:Label></a>                        
                     </div>
                 </div>
-               
+
                 <hr />
                 <!-- search form -->
                 <%-- <form action="#" method="get" class="sidebar-form">
@@ -128,10 +127,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../Vistas/GestionUsuarios.aspx"><i class="fa fa-angle-double-right"></i>Rol de Usuarios</a></li>                                                                
+                                <li><a href="../Vistas/GestionUsuarios.aspx"><i class="fa fa-angle-double-right"></i>Rol de Usuarios</a></li>
                             </ul>
                         </li>
-                         <li class="treeview active">
+                        <li class="treeview active">
                             <a href="#"><i class="fa fa-edit"></i><span>Gestión Documental</span> <small class="badge pull-right bg-green">new</small>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -145,7 +144,7 @@
                         <%var list = (List<int>)HttpContext.Current.Session["Modulos"];%>
                         <% foreach (int i in list)
                             {%>
-                       <%-- <% if (i.Equals(5))
+                        <%-- <% if (i.Equals(5))
                             {%>
                         <li class="treeview active">
                             <a href="#"><i class="fa fa-edit"></i><span>Gestión Documental</span> <small class="badge pull-right bg-green">new</small>

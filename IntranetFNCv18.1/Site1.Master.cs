@@ -12,12 +12,8 @@ namespace IntranetFNCv18._1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string sessionUserId = Session["cv"] as string;
-
-            if (string.IsNullOrEmpty(sessionUserId))
-            {
-                Label1.Text = Session["cv"].ToString();
-            }
+            int currentNumberOfUsers = IntranetFNCv18._1.Global.CurrentNumberOfUsers;            
+            lblCurrentNumberOfUsers.Text = currentNumberOfUsers.ToString();
         }
         protected void CerrarSession(object sender, EventArgs e)
         {
