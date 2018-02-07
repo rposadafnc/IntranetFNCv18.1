@@ -13,8 +13,7 @@ namespace IntranetFNCv18._1
         {
             Session["NombreMenu"] = "";
             
-        } 
-        
+        }         
         
     }
 }

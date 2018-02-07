@@ -38,8 +38,9 @@
           </Key>
           <Property Name="IdLog" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUsuario" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="IpEquipo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="FechaInicioSession" Type="datetime" Nullable="false" />
+          <Property Name="FechaFinalizoSession" Type="datetime" />
+          <Property Name="TiempoSession" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Modulo">
           <Key>
@@ -362,8 +363,9 @@
           </Key>
           <Property Name="IdLog" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IpEquipo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicioSession" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFinalizoSession" Type="DateTime" Precision="3" />
+          <Property Name="TiempoSession" Type="Time" Precision="7" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -455,8 +457,9 @@
           <EntitySetMapping Name="Log_Acceso_Usuario">
             <EntityTypeMapping TypeName="Intranet_FNCModel.Log_Acceso_Usuario">
               <MappingFragment StoreEntitySet="Log_Acceso_Usuario">
-                <ScalarProperty Name="IpEquipo" ColumnName="IpEquipo" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TiempoSession" ColumnName="TiempoSession" />
+                <ScalarProperty Name="FechaFinalizoSession" ColumnName="FechaFinalizoSession" />
+                <ScalarProperty Name="FechaInicioSession" ColumnName="FechaInicioSession" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdLog" ColumnName="IdLog" />
               </MappingFragment>

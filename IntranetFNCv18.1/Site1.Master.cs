@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IntranetFNCv18._1.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,23 +13,13 @@ namespace IntranetFNCv18._1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int currentNumberOfUsers = Global.CurrentNumberOfUsers;           
+           
+            int currentNumberOfUsers = Global.CurrentNumberOfUsers;
             lblCurrentNumberOfUsers.Text = currentNumberOfUsers.ToString();
             Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
             if (Session["Nombre"] == null)
                 Response.Redirect("LoginFNC1.aspx");
         }
-        protected void CerrarSession(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Session.Abandon();
-            Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
-            if (Request.Cookies["UserSettings"] != null)
-            {
-                HttpCookie myCookie = new HttpCookie("User");
-                myCookie.Expires = DateTime.Now.AddDays(-1d);
-                Response.Cookies.Add(myCookie);
-            }
-        }
+        
     }
 }

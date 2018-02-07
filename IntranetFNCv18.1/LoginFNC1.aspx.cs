@@ -15,6 +15,12 @@ namespace IntranetFNCv18._1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["idUsuario"] != null) {
+                    CerrarSession();
+                }
+            }
             errorLabel.Visible = false;
             errorLabel.Text = "";
             System.Threading.Thread.Sleep(1000);
@@ -70,8 +76,7 @@ namespace IntranetFNCv18._1
                         
                         Log_Acceso_Usuario log_ = new Log_Acceso_Usuario();
                         log_.IdUsuario = Rol.IdUsuario;
-                        log_.Fecha = DateTime.Now;
-                        log_.IpEquipo = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                        log_.FechaInicioSession = DateTime.Now;                        
                         ModelBD_Usuario.Log_Acceso_Usuario.Add(log_);
                         ModelBD_Usuario.SaveChanges();
 
@@ -134,6 +139,27 @@ namespace IntranetFNCv18._1
             DirectoryEntry ldapConnection = new DirectoryEntry(path, User, Pass, AuthenticationTypes.Secure);
 
             return ldapConnection;
-        }        
+        }
+        public void CerrarSession()
+        {
+            int idUsuario = int.Parse(Session["idUsuario"].ToString());
+            Intranet_FNCEntities ModelBD_Usuario = new Intranet_FNCEntities();
+            Log_Acceso_Usuario log = (from rt in ModelBD_Usuario.Log_Acceso_Usuario
+                                      where rt.IdUsuario == idUsuario
+                                      orderby rt.IdLog descending
+                                      select rt).First();
+
+            TimeSpan hi = TimeSpan.Parse((log.FechaInicioSession).ToString("HH:mm:ss"));
+            TimeSpan hf = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            TimeSpan time = hf - hi;
+            log.FechaFinalizoSession = DateTime.Now;
+            log.TiempoSession = time;
+            ModelBD_Usuario.SaveChanges();
+            if (Request.Cookies["userId"] != null)
+            {
+                Response.Cookies["userId"].Expires = DateTime.Now.AddDays(-1);
+            }
+
+        }
     }
 }

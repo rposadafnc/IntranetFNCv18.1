@@ -16,7 +16,8 @@ namespace IntranetFNCv18._1.Modelos
     {
         public long IdLog { get; set; }
         public int IdUsuario { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string IpEquipo { get; set; }
+        public System.DateTime FechaInicioSession { get; set; }
+        public Nullable<System.DateTime> FechaFinalizoSession { get; set; }
+        public Nullable<System.TimeSpan> TiempoSession { get; set; }
     }
 }
