@@ -45,6 +45,7 @@ namespace IntranetFNCv18._1
         protected void Session_End(Object sender, EventArgs e)
         {
             currentNumberOfUsers -= 1;
+            HttpContext.Current.Response.Redirect("~/LoginFNC1.aspx");
         }
         void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
