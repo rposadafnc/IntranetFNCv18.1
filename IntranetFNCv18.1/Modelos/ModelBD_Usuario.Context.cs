@@ -32,5 +32,6 @@ namespace IntranetFNCv18._1.Modelos
         public virtual DbSet<UsuarioRol> UsuarioRol { get; set; }
         public virtual DbSet<Acceso> Acceso { get; set; }
         public virtual DbSet<GestionDocumental> GestionDocumental { get; set; }
+        public virtual DbSet<Log_Acceso_Usuario> Log_Acceso_Usuario { get; set; }
     }
 }

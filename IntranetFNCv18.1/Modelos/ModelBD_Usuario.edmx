@@ -32,6 +32,15 @@
           <Property Name="TipoDocumento" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="NoDescargas" Type="bigint" />
         </EntityType>
+        <EntityType Name="Log_Acceso_Usuario">
+          <Key>
+            <PropertyRef Name="IdLog" />
+          </Key>
+          <Property Name="IdLog" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="IpEquipo" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
         <EntityType Name="Modulo">
           <Key>
             <PropertyRef Name="IdModulo" />
@@ -142,6 +151,7 @@
         <EntityContainer Name="Intranet_FNCModelStoreContainer">
           <EntitySet Name="Acceso" EntityType="Self.Acceso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GestionDocumental" EntityType="Self.GestionDocumental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_Acceso_Usuario" EntityType="Self.Log_Acceso_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoRol" EntityType="Self.TipoRol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoRol_Modulo" EntityType="Self.TipoRol_Modulo" Schema="dbo" store:Type="Tables" />
@@ -200,6 +210,7 @@
             <End Role="Acceso" EntitySet="Acceso" />
           </AssociationSet>
           <EntitySet Name="GestionDocumental" EntityType="Intranet_FNCModel.GestionDocumental" />
+          <EntitySet Name="Log_Acceso_Usuario" EntityType="Intranet_FNCModel.Log_Acceso_Usuario" />
         </EntityContainer>
         <EntityType Name="Modulo">
           <Key>
@@ -345,6 +356,15 @@
           <Property Name="TipoDocumento" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="NoDescargas" Type="Int64" />
         </EntityType>
+        <EntityType Name="Log_Acceso_Usuario">
+          <Key>
+            <PropertyRef Name="IdLog" />
+          </Key>
+          <Property Name="IdLog" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IpEquipo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -429,6 +449,16 @@
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
                 <ScalarProperty Name="IdGestionDocumental" ColumnName="IdGestionDocumental" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Acceso_Usuario">
+            <EntityTypeMapping TypeName="Intranet_FNCModel.Log_Acceso_Usuario">
+              <MappingFragment StoreEntitySet="Log_Acceso_Usuario">
+                <ScalarProperty Name="IpEquipo" ColumnName="IpEquipo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdLog" ColumnName="IdLog" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

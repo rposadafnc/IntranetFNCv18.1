@@ -16,8 +16,8 @@ namespace IntranetFNCv18._1
         protected void Page_Load(object sender, EventArgs e)
         {
             errorLabel.Visible = false;
-            errorLabel.Text = "";          
-            System.Threading.Thread.Sleep(1000);          
+            errorLabel.Text = "";
+            System.Threading.Thread.Sleep(1000);
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace IntranetFNCv18._1
 
                 if (true == adAuth.IsAuthenticated("Fenoco.local", User, Pass))
                 {
-                    
+
                     String groups = adAuth.GetGroups();
                     DirectoryEntry myLdapConnection = createDirectoryEntry(adPath, User, Pass);
 
@@ -66,6 +66,15 @@ namespace IntranetFNCv18._1
                         Session["Titulo"] = usuario.Properties["title"].Value.ToString();
                         Session["Unidad"] = usuario.Properties["department"].Value.ToString();
                         Session["Compañia"] = usuario.Properties["company"].Value.ToString();
+                        
+                        
+                        Log_Acceso_Usuario log_ = new Log_Acceso_Usuario();
+                        log_.IdUsuario = Rol.IdUsuario;
+                        log_.Fecha = DateTime.Now;
+                        log_.IpEquipo = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                        ModelBD_Usuario.Log_Acceso_Usuario.Add(log_);
+                        ModelBD_Usuario.SaveChanges();
+
                         //Create the ticket, and add the groups.
                         //bool isCookiePersistent = chkPersist.Checked;
                         FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, User,
@@ -85,7 +94,7 @@ namespace IntranetFNCv18._1
 
                         //You can redirect now.
                         Response.Redirect(FormsAuthentication.GetRedirectUrl(User, false));
-                        
+
                     }
                 }
                 else
@@ -125,6 +134,6 @@ namespace IntranetFNCv18._1
             DirectoryEntry ldapConnection = new DirectoryEntry(path, User, Pass, AuthenticationTypes.Secure);
 
             return ldapConnection;
-        }
+        }        
     }
 }

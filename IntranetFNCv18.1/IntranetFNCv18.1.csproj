@@ -1804,6 +1804,9 @@
     <Compile Include="Modelos\GestionDocumental.cs">
       <DependentUpon>ModelBD_Usuario.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Log_Acceso_Usuario.cs">
+      <DependentUpon>ModelBD_Usuario.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Modulo.cs">
       <DependentUpon>ModelBD_Usuario.tt</DependentUpon>
     </Compile>
@@ -1941,6 +1944,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Auxiliares\" />
     <Folder Include="Documentos\Manuales\" />
     <Folder Include="Documentos\PoliticasCorporativas\" />
     <Folder Include="Documentos\PoliticasOperativas\" />
