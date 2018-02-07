@@ -9,8 +9,7 @@
                 <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <h4><i class="icon fa fa-check"></i>Confirmación !</h4>
-                    Se ha agregado el documento exitosamente.      
-             
+                    Se ha agregado el documento exitosamente.
                 </div>
             </asp:Panel>
             <asp:Panel ID="PanelError" runat="server" Visible="false">

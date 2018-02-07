@@ -85,32 +85,17 @@
         <aside class="left-side sidebar-offcanvas">
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- Sidebar user panel -->
+                <!-- Sidebar user panel -->          
                 <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="../Content2/img/user.png" class="img-circle" alt="User Image" />
+                    <div style="text-align:center">
+                         <img src="../Content2/img/user.png" class="img-circle" alt="User Image" style="width: 30%; height: 30%"/>
                     </div>
                     <div class="pull-left info">
-                        <p>
-                            Hola, 
-                            <%=HttpContext.Current.Session["Nombre"].ToString()%><br />
-                        </p>
+                        <p style="text-align:center">Hola, <%=HttpContext.Current.Session["Nombre"].ToString()%></p>
                         <a href="#"><i class="fa fa-circle text-success"></i>Online</a><br />
-                        <a>  Numero de Usuarios Conectados: <asp:Label ID="lblCurrentNumberOfUsers" runat="server"></asp:Label></a>                        
+                        <a>Numero de Usuarios Conectados:<asp:Label ID="lblCurrentNumberOfUsers" runat="server"></asp:Label></a>
                     </div>
-                </div>
-
-                <hr />
-                <!-- search form -->
-                <%-- <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input name="buscador" id="buscador" type="text" class="form-control" placeholder="Buscar..." />
-                     <span class="input-group-btn">
-                            <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </form>--%>
-                <!-- /.search form -->
+                </div>                
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <div id="menu">
                     <ul class="sidebar-menu">
@@ -182,8 +167,7 @@
         <aside class="right-side">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>Dashboard
-                       
+                <h1>Dashboard                       
                     <small>Control panel</small>
                 </h1>
                 <ol class="breadcrumb">
