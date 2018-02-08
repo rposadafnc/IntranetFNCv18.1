@@ -1561,6 +1561,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\sweetalert.css" />
     <Content Include="DefaultFNC.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Imagenes\262laol.gif" />
@@ -1575,7 +1576,6 @@
     <Content Include="Imagenes\Loading_v6.gif" />
     <Content Include="Imagenes\Loading_v7.gif" />
     <Content Include="Scripts\sweetalert.min.js" />
-    <Content Include="Vistas\Accesos.aspx" />
     <Content Include="Vistas\GestionDocumentos.aspx" />
     <Content Include="Vistas\GestionUsuarios.aspx" />
     <Content Include="Global.asax" />
@@ -1603,8 +1603,6 @@
     <Content Include="Vistas\PoliticasCorporativas.aspx" />
     <Content Include="Vistas\PoliticasOperativas.aspx" />
     <Content Include="Vistas\Procedimientos-Instructivos.aspx" />
-    <Content Include="Vistas\Restricciones.aspx" />
-    <Content Include="Vistas\restricciones.html" />
     <Content Include="Vistas\V1\WebForm1.aspx" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\AdminLTE\bootstrap\css\bootstrap-theme.min.css.map" />
@@ -1798,6 +1796,13 @@
     <Compile Include="DefaultFNC.aspx.designer.cs">
       <DependentUpon>DefaultFNC.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Acceso.cs">
       <DependentUpon>ModelBD_Usuario.tt</DependentUpon>
     </Compile>
@@ -1815,13 +1820,6 @@
     </Compile>
     <Compile Include="Modelos\UsuarioRol.cs">
       <DependentUpon>ModelBD_Usuario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Accesos.aspx.cs">
-      <DependentUpon>Accesos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Accesos.aspx.designer.cs">
-      <DependentUpon>Accesos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\GestionDocumentos.aspx.cs">
       <DependentUpon>GestionDocumentos.aspx</DependentUpon>
@@ -1925,13 +1923,6 @@
     </Compile>
     <Compile Include="Vistas\Procedimientos-Instructivos.aspx.designer.cs">
       <DependentUpon>Procedimientos-Instructivos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\Restricciones.aspx.cs">
-      <DependentUpon>Restricciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\Restricciones.aspx.designer.cs">
-      <DependentUpon>Restricciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\V1\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

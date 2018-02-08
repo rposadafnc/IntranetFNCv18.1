@@ -7,18 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace IntranetFNCv18._1.Vistas {
+namespace IntranetFNCv18._1 {
     
     
-    public partial class Restricciones {
-        
-        /// <summary>
-        /// Control form1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+    public partial class Error {
     }
 }

@@ -18,7 +18,7 @@ namespace IntranetFNCv18._1
             lblCurrentNumberOfUsers.Text = currentNumberOfUsers.ToString();
             Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
             if (Session["Nombre"] == null)
-                Response.Redirect("LoginFNC1.aspx");
+                Response.Redirect("../LoginFNC1.aspx");
         }
         
     }

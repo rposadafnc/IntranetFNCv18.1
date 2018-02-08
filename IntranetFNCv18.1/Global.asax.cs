@@ -35,17 +35,14 @@ namespace IntranetFNCv18._1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
         void Session_Start(object sender, EventArgs e)
         { // Codigo que se ejectura cuando se inicia la sesion.
-
             totalNumberOfUsers += 1;
-            currentNumberOfUsers += 1;
+            currentNumberOfUsers += 1;  
         }
         protected void Session_End(Object sender, EventArgs e)
         {
-            currentNumberOfUsers -= 1;
-            HttpContext.Current.Response.Redirect("~/LoginFNC1.aspx");
+            
         }
         void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
@@ -73,19 +70,14 @@ namespace IntranetFNCv18._1
             {//Cookie failed to decrypt.
                 return;
             }
-
             //When the ticket was created, the UserData property was assigned a
             //pipe-delimited string of group names.
             String[] groups = authTicket.UserData.Split(new char[] { '|' });
-
             //Create an Identity.
             GenericIdentity id = new GenericIdentity(authTicket.Name, "LdapAuthentication");
-
             //This principal flows throughout the request.
             GenericPrincipal principal = new GenericPrincipal(id, groups);
-
             Context.User = principal;
-
         }
         protected void Application_End(Object sender, EventArgs e)
         {
@@ -96,9 +88,8 @@ namespace IntranetFNCv18._1
             Exception ex = this.Server.GetLastError().GetBaseException();
            // MyEventLog.LogException(ex); //Log the error in the Event Log!
                                          //
-            FormsAuthentication.SignOut();
-            this.Response.Redirect("Default.aspx?Error=1");//Here you can change with your URL!
+            //FormsAuthentication.SignOut();
+            //this.Response.Redirect("Default.aspx?Error=1");//Here you can change with your URL!
         }
-
     }
 }
