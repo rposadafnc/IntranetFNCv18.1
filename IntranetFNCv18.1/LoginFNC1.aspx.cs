@@ -1,4 +1,5 @@
-﻿using IntranetFNCv18._1.Modelos;
+﻿using IntranetFNCv18._1.Auxiliares;
+using IntranetFNCv18._1.Modelos;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,8 @@ namespace IntranetFNCv18._1
             if (!IsPostBack)
             {
                 if (Session["idUsuario"] != null) {
-                    CerrarSession();
+                    Auxiliar1 auxiliar = new Auxiliar1();
+                    auxiliar.CerrarSession();
                 }
             }
             errorLabel.Visible = false;
@@ -35,7 +37,6 @@ namespace IntranetFNCv18._1
             string Pass = Request.Form["Password"];
             try
             {
-
                 if (true == adAuth.IsAuthenticated("Fenoco.local", User, Pass))
                 {
 
@@ -71,8 +72,7 @@ namespace IntranetFNCv18._1
                         Session["Nombre"] = usuario.Properties["givenName"].Value.ToString();
                         Session["Titulo"] = usuario.Properties["title"].Value.ToString();
                         Session["Unidad"] = usuario.Properties["department"].Value.ToString();
-                        Session["Compañia"] = usuario.Properties["company"].Value.ToString();
-                        
+                        Session["Compañia"] = usuario.Properties["company"].Value.ToString();                        
                         
                         Log_Acceso_Usuario log_ = new Log_Acceso_Usuario();
                         log_.IdUsuario = Rol.IdUsuario;
@@ -129,7 +129,7 @@ namespace IntranetFNCv18._1
                     else
                     {
                         errorLabel.Visible = true;
-                        errorLabel.Text = "Error de autenticación, por favor verifique su nombre de Usuario y Contraseña. - Si el error persiste por favor contactarse con Dirección de Tecnología.";
+                        errorLabel.Text = "Error de autenticación, por favor verifique su nombre de Usuario y Contraseña. Si el error persiste por favor contactarse con Dirección de Tecnología.";
                     }
                 }
             }
@@ -139,27 +139,6 @@ namespace IntranetFNCv18._1
             DirectoryEntry ldapConnection = new DirectoryEntry(path, User, Pass, AuthenticationTypes.Secure);
 
             return ldapConnection;
-        }
-        public void CerrarSession()
-        {
-            int idUsuario = int.Parse(Session["idUsuario"].ToString());
-            Intranet_FNCEntities ModelBD_Usuario = new Intranet_FNCEntities();
-            Log_Acceso_Usuario log = (from rt in ModelBD_Usuario.Log_Acceso_Usuario
-                                      where rt.IdUsuario == idUsuario
-                                      orderby rt.IdLog descending
-                                      select rt).First();
-
-            TimeSpan hi = TimeSpan.Parse((log.FechaInicioSession).ToString("HH:mm:ss"));
-            TimeSpan hf = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
-            TimeSpan time = hf - hi;
-            log.FechaFinalizoSession = DateTime.Now;
-            log.TiempoSession = time;
-            ModelBD_Usuario.SaveChanges();
-            if (Request.Cookies["userId"] != null)
-            {
-                Response.Cookies["userId"].Expires = DateTime.Now.AddDays(-1);
-            }
-
-        }
+        }        
     }
 }
