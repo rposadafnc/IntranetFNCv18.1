@@ -11,33 +11,26 @@ namespace IntranetFNCv18._1
     {
         private String _path;
         private String _filterAttribute;
-
-        public LdapAuthentication(String path)
+        public LdapAuthentication()
         {
-            _path = path;
+            _path = "LDAP://fenoco.local";
         }
-
-        public bool IsAuthenticated(String domain, String username, String pwd)
+        public bool IsAuthenticated(String username, String pwd)
         {
-            String domainAndUsername = domain + @"\" + username;
+            String domainAndUsername = "Fenoco.local" + @"\" + username;
             DirectoryEntry entry = new DirectoryEntry(_path, domainAndUsername, pwd);
 
             try
-            {//Bind to the native AdsObject to force authentication.
+            {                
                 Object obj = entry.NativeObject;
-
                 DirectorySearcher search = new DirectorySearcher(entry);
-
                 search.Filter = "(SAMAccountName=" + username + ")";
                 search.PropertiesToLoad.Add("cn");
                 SearchResult result = search.FindOne();
-
                 if (null == result)
                 {
                     return false;
-                }
-
-                //Update the new path to the user in the directory.
+                }                
                 _path = result.Path;
                 _filterAttribute = (String)result.Properties["cn"][0];
             }
@@ -45,7 +38,6 @@ namespace IntranetFNCv18._1
             {
                 throw new Exception("Error authenticating user. " + ex.Message);
             }
-
             return true;
         }
 
@@ -55,7 +47,6 @@ namespace IntranetFNCv18._1
             search.Filter = "(cn=" + _filterAttribute + ")";
             search.PropertiesToLoad.Add("memberOf");
             StringBuilder groupNames = new StringBuilder();
-
             try
             {
                 SearchResult result = search.FindOne();
@@ -86,6 +77,12 @@ namespace IntranetFNCv18._1
                 throw new Exception("Error obtaining group names. " + ex.Message);
             }
             return groupNames.ToString();
+        }
+        public DirectoryEntry createDirectoryEntry(string User, string Pass)
+        {
+            DirectoryEntry ldapConnection = new DirectoryEntry(_path, User, Pass, AuthenticationTypes.Secure);
+
+            return ldapConnection;
         }
     }
 }

@@ -1839,7 +1839,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LdapAuthentication.cs" />
+    <Compile Include="Auxiliares\LdapAuthentication.cs" />
     <Compile Include="LoginFNC1.aspx.cs">
       <DependentUpon>LoginFNC1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1940,6 +1940,7 @@
     <Folder Include="Documentos\PoliticasCorporativas\" />
     <Folder Include="Documentos\PoliticasOperativas\" />
     <Folder Include="Documentos\Procedimientos-Instructivos\" />
+    <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -28,26 +28,20 @@ namespace IntranetFNCv18._1
             System.Threading.Thread.Sleep(1000);
         }
         protected void btnLogin_Click(object sender, EventArgs e)
-        {
-
-            String adPath = "LDAP://fenoco.local"; //Fully-qualified Domain Name
-            LdapAuthentication adAuth = new LdapAuthentication(adPath);
+        {    
+            LdapAuthentication adAuth = new LdapAuthentication();
             int i = 0;
             string User = Request.Form["Username"];
             string Pass = Request.Form["Password"];
             try
             {
-                if (true == adAuth.IsAuthenticated("Fenoco.local", User, Pass))
+                if (true == adAuth.IsAuthenticated(User, Pass))
                 {
-
                     String groups = adAuth.GetGroups();
-                    DirectoryEntry myLdapConnection = createDirectoryEntry(adPath, User, Pass);
-
+                    DirectoryEntry myLdapConnection = adAuth.createDirectoryEntry(User, Pass);
                     DirectorySearcher search = new DirectorySearcher(myLdapConnection);
                     search.Filter = "(samaccountname=" + User + ")";
-
                     SearchResult result = search.FindOne();
-
                     if (result != null)
                     {
                         DirectoryEntry usuario = result.GetDirectoryEntry();
@@ -134,11 +128,6 @@ namespace IntranetFNCv18._1
                 }
             }
         }
-        private DirectoryEntry createDirectoryEntry(string path, string User, string Pass)
-        {
-            DirectoryEntry ldapConnection = new DirectoryEntry(path, User, Pass, AuthenticationTypes.Secure);
-
-            return ldapConnection;
-        }        
+       
     }
 }
