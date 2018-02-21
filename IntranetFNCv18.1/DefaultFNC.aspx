@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="DefaultFNC.aspx.cs" Inherits="IntranetFNCv18._1.DefaultFNC" %>
+
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Inhead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="InBody" runat="server">  

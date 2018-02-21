@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace IntranetFNCv18._1.Vistas {
+namespace IntranetFNCv18._1.Vistas.TI {
     
     
-    public partial class GestionDocumentos {
+    public partial class FGUsuarios {
         
         /// <summary>
         /// Control form1.
@@ -20,6 +20,15 @@ namespace IntranetFNCv18._1.Vistas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// Control ScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// Control PanelConfirmacion.
@@ -49,192 +58,183 @@ namespace IntranetFNCv18._1.Vistas {
         protected global::System.Web.UI.WebControls.Label LblTipoerror2;
         
         /// <summary>
-        /// Control TxtTitulo.
+        /// Control TxtFechaInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtTitulo;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaInicio;
         
         /// <summary>
-        /// Control RfTitulo.
+        /// Control IncidentDate_edit_ibtn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfTitulo;
+        protected global::System.Web.UI.WebControls.ImageButton IncidentDate_edit_ibtn;
         
         /// <summary>
-        /// Control TxtDescripcion.
+        /// Control RvFechaInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
+        protected global::System.Web.UI.WebControls.RangeValidator RvFechaInicio;
         
         /// <summary>
-        /// Control RfDescripcion.
+        /// Control CeFechaInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfDescripcion;
+        protected global::AjaxControlToolkit.CalendarExtender CeFechaInicio;
         
         /// <summary>
-        /// Control ddlTipoDocumento.
+        /// Control TtxNombreUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoDocumento;
+        protected global::System.Web.UI.WebControls.TextBox TtxNombreUsuario;
         
         /// <summary>
-        /// Control dllDireccionFNC.
+        /// Control TxtNoIdentificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dllDireccionFNC;
+        protected global::System.Web.UI.WebControls.TextBox TxtNoIdentificacion;
         
         /// <summary>
-        /// Control SqlDataSource_DireccionesFNC.
+        /// Control TxtCargo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_DireccionesFNC;
+        protected global::System.Web.UI.WebControls.TextBox TxtCargo;
         
         /// <summary>
-        /// Control FileUpload_Documento.
+        /// Control DrdAreas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Documento;
+        protected global::System.Web.UI.WebControls.DropDownList DrdAreas;
         
         /// <summary>
-        /// Control RequiredFieldValidator3.
+        /// Control SqlDataSource_Ar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Ar;
         
         /// <summary>
-        /// Control LblFile.
+        /// Control DrdGerencias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblFile;
+        protected global::System.Web.UI.WebControls.DropDownList DrdGerencias;
         
         /// <summary>
-        /// Control btnGuardarDocumento.
+        /// Control SqlDataSource_Gerencias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarDocumento;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Gerencias;
         
         /// <summary>
-        /// Control PnlEliminarOk.
+        /// Control DrdJefes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlEliminarOk;
+        protected global::System.Web.UI.WebControls.DropDownList DrdJefes;
         
         /// <summary>
-        /// Control PnlEliminarError.
+        /// Control SqlDataSource_Usuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlEliminarError;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Usuarios;
         
         /// <summary>
-        /// Control LblTipoerror.
+        /// Control ChbSistemas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblTipoerror;
+        protected global::System.Web.UI.WebControls.CheckBoxList ChbSistemas;
         
         /// <summary>
-        /// Control txtBuscar_GridView_Documentos.
+        /// Control SqlDataSource_SI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscar_GridView_Documentos;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_SI;
         
         /// <summary>
-        /// Control BtnBuscarDocumento.
+        /// Control ChbModulos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscarDocumento;
+        protected global::System.Web.UI.WebControls.CheckBoxList ChbModulos;
         
         /// <summary>
-        /// Control BtnRestablecerDocumento.
+        /// Control TxtOtrosPermisos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnRestablecerDocumento;
+        protected global::System.Web.UI.WebControls.TextBox TxtOtrosPermisos;
         
         /// <summary>
-        /// Control lblDocumentos.
+        /// Control TxtJustificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDocumentos;
+        protected global::System.Web.UI.WebControls.TextBox TxtJustificacion;
         
         /// <summary>
-        /// Control GridView_Documentos.
+        /// Control TxtNotas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_Documentos;
+        protected global::System.Web.UI.WebControls.TextBox TxtNotas;
         
         /// <summary>
-        /// Control SqlDataSource_BuscarDocumento.
+        /// Control btnGuardarUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_BuscarDocumento;
-        
-        /// <summary>
-        /// Control SqlDataSource_Documentos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Documentos;
+        protected global::System.Web.UI.WebControls.Button btnGuardarUsuario;
     }
 }

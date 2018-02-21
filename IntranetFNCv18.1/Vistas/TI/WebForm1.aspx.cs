@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace IntranetFNCv18._1.Vistas.V1
+namespace IntranetFNCv18._1.Vistas.TI
 {
     public partial class WebForm1 : System.Web.UI.Page
     {

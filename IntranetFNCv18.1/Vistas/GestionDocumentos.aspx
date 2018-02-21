@@ -28,18 +28,17 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-
                 <div class="box-body">
                     <div class="form-group">
                         <label>Titulo:</label>
                         <asp:TextBox ID="TxtTitulo" runat="server" class="form-control" Width="100%" CausesValidation="true"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="El campo nombre es obligatorio." ControlToValidate="TxtTitulo" ForeColor="Red" ValidationGroup="PersonalInfoGroup"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RfTitulo" runat="server" ErrorMessage="El campo nombre es obligatorio." ControlToValidate="TxtTitulo" ForeColor="Red" ValidationGroup="PersonalInfoGroup"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group">
                         <label>Descripción:</label>
                         <asp:TextBox ID="TxtDescripcion" runat="server" class="form-control" Width="100%" Height="75px" CausesValidation="true"></asp:TextBox>
                         <p class="help-block">Máximo de caracteres 200.</p>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="El campo Descripción es obligatorio." ControlToValidate="TxtDescripcion" ForeColor="Red" ValidationGroup="PersonalInfoGroup"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RfDescripcion" runat="server" ErrorMessage="El campo Descripción es obligatorio." ControlToValidate="TxtDescripcion" ForeColor="Red" ValidationGroup="PersonalInfoGroup"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group">
                         <label>Tipo Documento:</label>

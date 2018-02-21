@@ -22,13 +22,16 @@ namespace IntranetFNCv18._1
                 if (Session["NombreMenu"].ToString() == "")
                 {
                     Response.Redirect("LoginFNC1.aspx");
+                    Auxiliar1 auxiliar = new Auxiliar1();
+                    auxiliar.CerrarSession();
                 }
                 else
                 {
-                    Response.Redirect("../LoginFNC1.aspx");
+                    Response.Redirect("~/LoginFNC1.aspx");
+                    Auxiliar1 auxiliar = new Auxiliar1();
+                    auxiliar.CerrarSession();
                 }
-                Auxiliar1 auxiliar = new Auxiliar1();                
-                auxiliar.CerrarSession();
+              
             }
         }
     }
