@@ -22,7 +22,7 @@ namespace IntranetFNCv18._1.Vistas
             PanelError.Visible = false;
             PnlEliminarError.Visible = false;
             PnlEliminarOk.Visible = false;
-            Session["NombreMenu"] = "Gestión de Documentos - Politicas Corporativas";
+            Session["NombreMenu"] = "Gestión de Documentos - Politicas Corporativas.";
         }
         protected void btnGuardarDocumento_Click(object sender, EventArgs e)
         {
